@@ -261,11 +261,17 @@ const nitram_micro_mono_CP437 = [
     0, 0, 0, 0, 0
 ]
 
+function pixelAtPos(c, x, y) {
+    return (nitram_micro_mono_CP437[c * 5 + y] & (1 << x)) == (1 << x)
+}
+
+exports.pixelAtPos = pixelAtPos;
+
 exports.drawChar = function drawCharacter(c) {
     for (let y = 0; y < 5; y++) {
         let line = '';
         for (let x = 0; x < 5; x++) {
-            if ((nitram_micro_mono_CP437[c * 5 + y] & (1 << x)) == (1 << x)) {
+            if (pixelAtPos(c, x, y)) {
                 line += 'X';
             } else {
                 line += ' ';
