@@ -20,6 +20,11 @@ async function addCommitToDate(path, dateStr) {
 
 const path = '/home/ahoydave/projects/github-secret-message/test1'
 
-doStuff('2014-01-02T12:00:00').then(() => {
-    console.log('Done!');
-});
+// doStuff('2014-01-02T12:00:00').then(() => {
+//     console.log('Done!');
+// });
+
+const { drawAll, drawChar } = require('./font');
+// drawAll();
+drawChar(65);
+console.log('A'.charCodeAt(0));
