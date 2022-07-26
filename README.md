@@ -12,7 +12,7 @@ The script converts your message to a 5x5 pixel font (Nitram Micro - see credits
 
 1. Decide on a message. You can fit about 8 characters into a one year contrib graph.
 
-1. Pick the starting date for the message. This needs to be on the top line of your contrib graph and I suggest as far left as possible. For example, in 2014 a good starting date is 2014-01-12
+1. Pick the starting date for the message. This needs to be a Sunday so that it is on the top line of your contrib graph and I suggest as far left as possible. For example, in 2014 a good starting date is 2014-01-12
 
 1. Clone this repo and install deps. I wrote this using node 16 so use that to be safe
 ```
