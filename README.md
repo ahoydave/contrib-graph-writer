@@ -21,7 +21,7 @@ The script converts your message to a 5x5 pixel font (Nitram Micro - see credits
 > npm install
 ```
 
-1. Run the script with your target repo `path`, the `start date` in ISO format and your `message`. The `numCommitsPerDate` allows you to make your message stand out if there are other commits associated with your account.
+5. Run the script with your target repo `path`, the `start date` in ISO format and your `message`. The `numCommitsPerDate` allows you to make your message stand out if there are other commits associated with your account.
 ```
 > node main.js <path> <start date> <message> <num commits per date>
 ```
@@ -31,7 +31,7 @@ Make sure you put quotation marks around the message if there are spaces. For ex
 ```
 You should see some git output
 
-1. If nothing broke, push the changes to github and check your graph to see if it worked!
+6. If nothing broke, push the changes to github and check your graph to see if it worked!
 
 ## Can you undo it?
 
