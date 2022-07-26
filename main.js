@@ -7,10 +7,11 @@ async function execAndPrint(cmd) {
     console.error(stderr);
 }
 
-async function addCommitToDate(path, dateStr) {
+async function addCommitToDate(path, date) {
+    const dateStr = date.toISOString();
 
-    const editCmd = `cd ${path} && echo "2" > content.txt`;
-    const commitCmd = `cd ${path} && git commit -am "2"`
+    const editCmd = `cd ${path} && echo "1" >> content.txt`;
+    const commitCmd = `cd ${path} && git commit -am "1"`
     const commitUpdateCmd = `GIT_COMMITTER_DATE='${dateStr}' cd ${path} && git commit --amend --date='${dateStr}' --no-edit`
 
     await execAndPrint(editCmd);
@@ -19,10 +20,6 @@ async function addCommitToDate(path, dateStr) {
 }
 
 const path = '/home/ahoydave/projects/github-secret-message/test1'
-
-// doStuff('2014-01-02T12:00:00').then(() => {
-//     console.log('Done!');
-// });
 
 const { drawAll, drawChar, pixelAtPos } = require('./font');
 // drawAll();
@@ -64,4 +61,34 @@ function stringToEncoded(s) {
 
 writeEncoded(charToEncoded(65));
 console.log('Zs'.charCodeAt(0));
-writeEncoded(stringToEncoded('hi mike'));
+writeEncoded(stringToEncoded('all your base'));
+
+const addDate = require('date-fns/add');
+let d = new Date();
+// console.log(d);
+// console.log(addDate(d, { days: 1 }));
+
+function encodedToDates(firstDate, encoded) {
+    const dates = [];
+    let currDate = firstDate;
+    for (draw of encoded) {
+        if (draw) {
+            dates.push(currDate);
+        }
+        currDate = addDate(currDate, { days: 1 });
+    }
+    return dates;
+}
+
+const dates = encodedToDates(new Date('2014-01-12T12:00:00'), stringToEncoded('HI THERE'));
+dates.forEach(x => console.log(x));
+
+async function datesToCommits(path, dates) {
+    for (const date of dates) {
+        await addCommitToDate(path, date)
+    }
+}
+
+datesToCommits(path, dates).then(() => {
+    console.log('Done!');
+});
