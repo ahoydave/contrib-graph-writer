@@ -11,7 +11,7 @@ async function addCommitToDate(path, date) {
     const dateStr = date.toISOString();
 
     const editCmd = `cd ${path} && echo "1" >> content.txt`;
-    const commitCmd = `cd ${path} && git commit -am "1"`
+    const commitCmd = `cd ${path} && git add . && git commit -am "1"`
     const commitUpdateCmd = `GIT_COMMITTER_DATE='${dateStr}' cd ${path} && git commit --amend --date='${dateStr}' --no-edit`
 
     await execAndPrint(editCmd);
